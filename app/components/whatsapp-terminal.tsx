@@ -169,7 +169,6 @@ export function WhatsAppTerminal() {
               onChange={(e) => setInput(e.target.value)}
               className="flex-1 bg-transparent text-white outline-none caret-green-400"
               placeholder="Type your message or 'help' for commands..."
-              autoFocus
             />
             <Button type="submit" size="sm" className="ml-2 bg-green-500 hover:bg-green-600 text-black">
               <Send className="w-4 h-4" />
