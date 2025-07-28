@@ -1,12 +1,17 @@
+"use client"
+
+import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Github, Linkedin, Mail, Shield, Terminal, Zap, Download } from "lucide-react"
+import { Github, Linkedin, Mail, Shield, Terminal, Zap, Download, Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { WhatsAppTerminal } from "./components/whatsapp-terminal"
 
 export default function Portfolio() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
   const skillCategories = [
     {
       title: "Pentesting & Ethical Hacking",
@@ -72,6 +77,8 @@ export default function Portfolio() {
             <Terminal className="inline-block w-6 h-6 mr-2" />
             Agustín Maldonado
           </div>
+          
+          {/* Desktop Menu -  */}
           <div className="hidden md:flex space-x-6">
             <Link href="#home" className="hover:text-green-400 transition-colors">
               Inicio
@@ -92,7 +99,65 @@ export default function Portfolio() {
               Contacto
             </Link>
           </div>
-        </div>
+          
+          {/* Mobile Menu Button - SOLO VISIBLE EN MÓVIL */}
+          <button 
+            className="md:hidden text-green-400"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          </div>
+          
+          {/* Mobile Menu - SOLO VISIBLE EN MÓVIL */}
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-black/95 border-t border-green-500/20">
+              <div className="px-4 py-2 space-y-2">
+                <Link 
+                  href="#home" 
+                  className="block py-2 hover:text-green-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Inicio
+                </Link>
+                <Link 
+                  href="#about" 
+                  className="block py-2 hover:text-green-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Acerca de
+                </Link>
+                <Link 
+                  href="#education" 
+                  className="block py-2 hover:text-green-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Formación
+                </Link>
+                <Link 
+                  href="#skills" 
+                  className="block py-2 hover:text-green-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Habilidades
+                </Link>
+                <Link 
+                  href="#projects" 
+                  className="block py-2 hover:text-green-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Proyectos
+                </Link>
+                <Link 
+                  href="#contact" 
+                  className="block py-2 hover:text-green-400 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contacto
+                </Link>
+              </div>
+            </div>
+          )}
       </nav>
 
       {/* Hero Section */}
@@ -108,29 +173,36 @@ export default function Portfolio() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            {/* Título - Solo ajuste móvil */}
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 max-md:text-3xl">
               <span className="text-green-400">Agustín</span> Maldonado
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-4">Cybersecurity Specialist</p>
-            <p className="text-lg text-gray-400 mb-8 max-w-3xl mx-auto">
+            {/* Subtítulo - Solo ajuste móvil */}
+            <p className="text-xl md:text-2xl text-gray-300 mb-4 max-md:text-lg">Cybersecurity Specialist</p>
+            {/* Descripción - Solo padding móvil */}
+            <p className="text-lg text-gray-400 mb-8 max-w-3xl mx-auto max-md:px-4 max-md:text-base">
               Protegiendo activos digitales y fortaleciendo la seguridad organizacional. Combinando análisis de
               vulnerabilidades con implementación de controles de seguridad efectivos.
             </p>
-            <div className="flex justify-center space-x-4 mb-8">
-              <Badge variant="outline" className="border-green-400 text-green-400">
-                <Shield className="w-4 h-4 mr-1" />
+            
+            {/* Badges - Solo ajuste móvil */}
+            <div className="flex justify-center space-x-4 mb-8 max-md:flex-wrap max-md:gap-2 max-md:space-x-0">
+              <Badge variant="outline" className="border-green-400 text-green-400 max-md:text-xs">
+                <Shield className="w-4 h-4 mr-1 max-md:w-3 max-md:h-3" />
                 Pentesting
               </Badge>
-              <Badge variant="outline" className="border-green-400 text-green-400">
-                <Zap className="w-4 h-4 mr-1" />
+              <Badge variant="outline" className="border-green-400 text-green-400 max-md:text-xs">
+                <Zap className="w-4 h-4 mr-1 max-md:w-3 max-md:h-3" />
                 SIEM & SOC
               </Badge>
-              <Badge variant="outline" className="border-green-400 text-green-400">
-                <Terminal className="w-4 h-4 mr-1" />
+              <Badge variant="outline" className="border-green-400 text-green-400 max-md:text-xs">
+                <Terminal className="w-4 h-4 mr-1 max-md:w-3 max-md:h-3" />
                 Forense Digital
               </Badge>
             </div>
-            <div className="flex justify-center space-x-4">
+            
+            {/* Botones - Solo stack móvil */}
+            <div className="flex justify-center space-x-4 max-md:flex-col max-md:space-x-0 max-md:space-y-3 max-md:px-4">
               <Button className="bg-green-500 hover:bg-green-600 text-black">
                 <Download className="w-4 h-4 mr-2" />
                 Download CV
@@ -333,32 +405,34 @@ export default function Portfolio() {
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-lg text-gray-300 mb-8">
+              <p className="text-lg text-gray-300 mb-8 max-md:px-4">
                 ¿Interesado en colaborar? Me encantaría conocer más sobre tu proyecto y cómo puedo ayudarte.
               </p>
-              <div className="flex justify-center space-x-8 mb-8">
+              
+              {/* Links - Solo stack móvil */}
+              <div className="flex justify-center space-x-8 mb-8 max-md:flex-col max-md:space-x-0 max-md:space-y-4 max-md:px-4">
                 <Link
                   href="mailto:agustin.developer.1@gmail.com"
-                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
+                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors max-md:justify-center"
                 >
-                  <Mail className="w-6 h-6" />
-                  <span>agustin.developer.1@gmail.com</span>
+                  <Mail className="w-6 h-6 max-md:w-5 max-md:h-5" />
+                  <span className="max-md:text-sm">agustin.developer.1@gmail.com</span>
                 </Link>
                 <Link
                   href="https://linkedin.com/in/agustin-maldonado1"
                   target="_blank"
-                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
+                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors max-md:justify-center"
                 >
-                  <Linkedin className="w-6 h-6" />
-                  <span>LinkedIn</span>
+                  <Linkedin className="w-6 h-6 max-md:w-5 max-md:h-5" />
+                  <span className="max-md:text-sm">LinkedIn</span>
                 </Link>
                 <Link
                   href="https://github.com/Maldonatioinn"
                   target="_blank"
-                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors"
+                  className="flex items-center space-x-2 text-green-400 hover:text-green-300 transition-colors max-md:justify-center"
                 >
-                  <Github className="w-6 h-6" />
-                  <span>GitHub</span>
+                  <Github className="w-6 h-6 max-md:w-5 max-md:h-5" />
+                  <span className="max-md:text-sm">GitHub</span>
                 </Link>
               </div>
             </div>

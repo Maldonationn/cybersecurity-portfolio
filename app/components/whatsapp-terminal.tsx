@@ -143,41 +143,42 @@ export function WhatsAppTerminal() {
   return (
     <Card className="bg-gray-900 border-green-500/30 max-w-4xl mx-auto">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center text-green-400">
-          <Terminal className="w-5 h-5 mr-2" />
+        <CardTitle className="flex items-center text-green-400 max-md:text-sm">
+          <Terminal className="w-5 h-5 mr-2 max-md:w-4 max-md:h-4" />
           WhatsApp Contact Terminal
-          <MessageCircle className="w-5 h-5 ml-2" />
+          <MessageCircle className="w-5 h-5 ml-2 max-md:w-4 max-md:h-4" />
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="bg-black rounded-lg p-4 font-mono text-sm">
-          <div className="h-64 overflow-y-auto mb-4 space-y-1">
+      <CardContent className="max-md:px-3">
+        <div className="bg-black rounded-lg p-4 font-mono text-sm max-md:p-3 max-md:text-xs">
+          <div className="h-64 overflow-y-auto mb-4 space-y-1 max-md:h-48">
             {messages.map((message, index) => (
-              <div key={index} className={getMessageStyle(message.type)}>
+              <div key={index} className={`${getMessageStyle(message.type)} break-words`}>
                 {message.content}
               </div>
             ))}
             <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={handleSubmit} className="flex items-center">
-            <span className="text-green-400 mr-2">{currentPrompt}</span>
+          <form onSubmit={handleSubmit} className="flex items-center max-md:gap-1">
+            <span className="text-green-400 mr-2 max-md:mr-1 max-md:text-xs">{currentPrompt}</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="flex-1 bg-transparent text-white outline-none caret-green-400"
+              className="flex-1 bg-transparent text-white outline-none caret-green-400 max-md:text-xs"
               placeholder="Type your message or 'help' for commands..."
             />
-            <Button type="submit" size="sm" className="ml-2 bg-green-500 hover:bg-green-600 text-black">
-              <Send className="w-4 h-4" />
+            <Button type="submit" size="sm" className="ml-2 bg-green-500 hover:bg-green-600 text-black max-md:ml-1">
+              <Send className="w-4 h-4 max-md:w-3 max-md:h-3" />
             </Button>
           </form>
 
-          <div className="mt-3 text-xs text-gray-500">
+          <div className="mt-3 text-xs text-gray-500 max-md:text-xs">
             <p>Commands: help | send &lt;message&gt; | contact | clear</p>
-            <p>Or just type your message directly to send via WhatsApp</p>
+            <p className="max-md:hidden">Or just type your message directly to send via WhatsApp</p>
+            <p className="md:hidden">Or type your message directly</p>
           </div>
         </div>
       </CardContent>
