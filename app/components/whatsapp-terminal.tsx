@@ -15,6 +15,7 @@ export function WhatsAppTerminal() {
     { type: "prompt", content: "user@cybersec:~$ " },
   ])
   const [currentPrompt, setCurrentPrompt] = useState("user@cybersec:~$ ")
+  const [shouldScroll, setShouldScroll] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
@@ -23,8 +24,11 @@ export function WhatsAppTerminal() {
   }
 
   useEffect(() => {
-    scrollToBottom()
-  }, [messages])
+    if (shouldScroll) {
+      scrollToBottom()
+      setShouldScroll(false)
+    }
+  }, [messages, shouldScroll])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,6 +36,7 @@ export function WhatsAppTerminal() {
 
     // Add user command to messages
     setMessages((prev) => [...prev, { type: "command", content: `${currentPrompt}${input}` }])
+    setShouldScroll(true)
 
     // Process command
     processCommand(input.trim())
@@ -51,6 +56,7 @@ export function WhatsAppTerminal() {
         { type: "output", content: "  clear         - Clear terminal" },
         { type: "prompt", content: currentPrompt },
       ])
+      setShouldScroll(true)
     } else if (lowerCommand === "clear") {
       setMessages([
         { type: "system", content: "WhatsApp Terminal v1.0.0 - Cybersecurity Contact Interface" },
@@ -67,6 +73,7 @@ export function WhatsAppTerminal() {
         { type: "output", content: "  GitHub: github.com/Maldonatioinn" },
         { type: "prompt", content: currentPrompt },
       ])
+      setShouldScroll(true)
     } else if (lowerCommand.startsWith("send ")) {
       const message = command.substring(5)
       if (message.trim()) {
@@ -77,6 +84,7 @@ export function WhatsAppTerminal() {
           { type: "success", content: "Opening WhatsApp..." },
           { type: "prompt", content: currentPrompt },
         ])
+        setShouldScroll(true)
         setTimeout(() => {
           window.open(whatsappUrl, "_blank")
         }, 1000)
@@ -87,6 +95,7 @@ export function WhatsAppTerminal() {
           { type: "error", content: "Usage: send <your message>" },
           { type: "prompt", content: currentPrompt },
         ])
+        setShouldScroll(true)
       }
     } else if (command.trim() && !lowerCommand.startsWith("send ")) {
       // If it's not a command, treat it as a direct message
@@ -97,6 +106,7 @@ export function WhatsAppTerminal() {
         { type: "success", content: "Opening WhatsApp..." },
         { type: "prompt", content: currentPrompt },
       ])
+      setShouldScroll(true)
       setTimeout(() => {
         window.open(whatsappUrl, "_blank")
       }, 1000)
@@ -107,6 +117,7 @@ export function WhatsAppTerminal() {
         { type: "error", content: 'Type "help" for available commands' },
         { type: "prompt", content: currentPrompt },
       ])
+      setShouldScroll(true)
     }
   }
 
