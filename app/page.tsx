@@ -101,7 +101,7 @@ export default function Portfolio() {
           <div className="mb-8">
             <div className="w-32 h-32 mx-auto mb-6 rounded-full border-2 border-green-400 overflow-hidden">
               <Image
-                src="/placeholder.svg?height=128&width=128"
+                src="/icono3.png"
                 alt="Agustín Maldonado"
                 width={128}
                 height={128}

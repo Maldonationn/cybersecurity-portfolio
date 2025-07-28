@@ -6,6 +6,11 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Cybersecurity Portfolio',
   description: 'Professional cybersecurity portfolio showcasing skills and projects',
+  icons: {
+    icon: '/icono3.png',
+    shortcut: '/icono3.png',
+    apple: '/icono3.png',
+  },
 }
 
 export default function RootLayout({
