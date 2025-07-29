@@ -252,22 +252,22 @@ export default function Portfolio() {
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-green-500/30"></div>
+              {/* Timeline line - Responsive */}
+              <div className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-green-500/30"></div>
 
               <div className="space-y-8">
                 {/* Ingeniería de Software */}
                 <div className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-green-500 rounded-full border-4 border-black"></div>
-                  <div className="ml-16">
+                  <div className="absolute left-2 md:left-6 w-4 h-4 bg-green-500 rounded-full border-4 border-black"></div>
+                  <div className="ml-8 md:ml-16 pr-2">
                     <Card className="bg-gray-800 border-green-500/20">
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <div>
-                            <h3 className="text-xl font-semibold text-green-400 mb-1">Ingeniería de Software</h3>
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3 gap-2">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg md:text-xl font-semibold text-green-400 mb-1 break-words">Ingeniería de Software</h3>
                             <p className="text-gray-300">Universidad</p>
                           </div>
-                          <Badge className="bg-green-500/20 text-green-400 border-green-500/30 ml-4 flex-shrink-0">
+                          <Badge className="bg-green-500/20 text-green-400 border-green-500/30 self-start md:ml-4 shrink-0">
                             En Curso
                           </Badge>
                         </div>
@@ -279,18 +279,18 @@ export default function Portfolio() {
 
                 {/* Técnico Superior */}
                 <div className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-green-400 rounded-full border-4 border-black"></div>
-                  <div className="ml-16">
+                  <div className="absolute left-2 md:left-6 w-4 h-4 bg-green-400 rounded-full border-4 border-black"></div>
+                  <div className="ml-8 md:ml-16 pr-2">
                     <Card className="bg-gray-800 border-green-500/20">
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <div>
-                            <h3 className="text-xl font-semibold text-green-400 mb-1">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3 gap-2">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg md:text-xl font-semibold text-green-400 mb-1 break-words">
                               Técnico Superior en Programación
                             </h3>
                             <p className="text-gray-300">Graduado</p>
                           </div>
-                          <Badge className="bg-green-600/20 text-green-300 border-green-600/30 ml-4 flex-shrink-0">
+                          <Badge className="bg-green-600/20 text-green-300 border-green-600/30 self-start md:ml-4 shrink-0">
                             Completado
                           </Badge>
                         </div>
@@ -301,18 +301,18 @@ export default function Portfolio() {
 
                 {/* Especialización */}
                 <div className="relative flex items-start">
-                  <div className="absolute left-6 w-4 h-4 bg-green-300 rounded-full border-4 border-black"></div>
-                  <div className="ml-16">
+                  <div className="absolute left-2 md:left-6 w-4 h-4 bg-green-300 rounded-full border-4 border-black"></div>
+                  <div className="ml-8 md:ml-16 pr-2">
                     <Card className="bg-gray-800 border-green-500/20">
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <div>
-                            <h3 className="text-xl font-semibold text-green-400 mb-1">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3 gap-2">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg md:text-xl font-semibold text-green-400 mb-1 break-words">
                               Especialización en Ciberseguridad
                             </h3>
                             <p className="text-gray-300">Security & Digital Protection Focus</p>
                           </div>
-                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 ml-4 flex-shrink-0">
+                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 self-start md:ml-4 shrink-0">
                             Enfoque Especializado
                           </Badge>
                         </div>
