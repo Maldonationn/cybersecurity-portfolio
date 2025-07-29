@@ -77,7 +77,7 @@ export function WhatsAppTerminal() {
     } else if (lowerCommand.startsWith("send ")) {
       const message = command.substring(5)
       if (message.trim()) {
-        const whatsappUrl = `https://wa.me/+5491234567890?text=${encodeURIComponent(message)}`
+        const whatsappUrl = `https://wa.me/+5492984210002?text=${encodeURIComponent(message)}`
         setMessages((prev) => [
           ...prev,
           { type: "success", content: `Sending message: "${message}"` },
@@ -99,7 +99,7 @@ export function WhatsAppTerminal() {
       }
     } else if (command.trim() && !lowerCommand.startsWith("send ")) {
       // If it's not a command, treat it as a direct message
-      const whatsappUrl = `https://wa.me/+5491234567890?text=${encodeURIComponent(command)}`
+      const whatsappUrl = `https://wa.me/+5492984210002?text=${encodeURIComponent(command)}`
       setMessages((prev) => [
         ...prev,
         { type: "success", content: `Sending message: "${command}"` },
